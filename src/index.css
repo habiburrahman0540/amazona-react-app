@@ -22,6 +22,7 @@ body{
 #root{
   height: 100%;
 }
+
 /* Layout */
 .grid-container{
   display: grid;
@@ -43,11 +44,53 @@ header{
   justify-content: space-between;
   align-items: center;
 }
+.row.top{
+  align-items: flex-start;
+}
+.col-1{
+  flex: 1 1 25rem;
+  margin-left: 2rem;
+}
+.col-2{
+  flex: 2 1 50rem;
+}
 a{
   text-decoration: none;
 }
 a:hover{
   color: #ff8000;
+}
+ul{
+padding: 0;
+margin: 0;
+list-style: none;
+}
+li{
+  margin-top: 1rem;
+}
+input,select,textarea,
+button{
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 0.1rem solid #a4a4a4;
+  font-size: 1.6rem;
+  font-family: Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f8f8f8;
+  cursor: pointer;
+}
+input:hover,select:hover,textarea:hover{
+  border: 0.1rem solid #090a75;
+}
+button:hover{
+  border: 0.1rem solid #404040;
+}
+button.primary{
+  background-color: #f0c040;
+}
+button.block{
+  width: 100%;
 }
 header a{
   color: #fff;
@@ -69,16 +112,28 @@ footer{
 .row.center{
   justify-content: center;
 }
+.min-30{
+  max-width: 30rem;
+}
 img{
   border-radius: 0.5rem;
+}
+img.small{
+  max-width: 5rem;
+  width: 100%;
 }
 img.medium{
   max-width: 29rem;
   width: 100%;
 }
+img.large{
+  max-width: 43rem;
+  width: 100%;
+  height: 100%;
+}
 .card{
   border: 0.1rem solid #c0c0c0;
-  background-color: #E6E6E6;
+  background-color: #F9F6F9;
   border-radius: 0.5rem;
   margin: 1rem;
 }
@@ -88,10 +143,53 @@ img.medium{
 .card-body > * {
   margin-bottom: 0.5rem;
 }
+.badge {
+  background-color: #ff8000;
+  padding: 0.2rem 0.7rem;
+  border-radius: 50%;
+  margin-left: 0.3rem;
+  color: #fff;
+  font-size: 1.4rem;
+}
 .price{
   font-size: 2rem;
 }
-span i{
+.rating span {
   color: #f0c040;
   margin: 0.1rem;
+}
+.rating span:last-child {
+  color: #404040;
+  margin-left: 0.5rem;
+}
+.success{
+  color: #20a020;
+}
+.danger{
+  color: #a02020;
+}
+
+.alert {
+  padding: 1rem;
+  border: 0.1rem solid transparent;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.alert-info{
+  color: #2020a0;
+  background-color: #e0e0ff;
+}
+.alert-danger{
+  color: #a02020;
+  background-color: #e0e0ff;
+}
+.loading{
+  color: #a02020;
+  font-size: 3.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
 }

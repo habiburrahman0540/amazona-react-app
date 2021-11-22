@@ -1,45 +1,38 @@
-import data from './data';
+import { useSelector } from 'react-redux';
+import {BrowserRouter as Router,Routes,Route, Link} from 'react-router-dom'; 
+import CartScreen from './Screens/cartScreen';
+import HomeScreen from './Screens/HomeScreen';
+import ProductScreen from './Screens/ProductScreen';
 function App() {
+    const cart = useSelector(state=>state.cart);
+    const {cartItems} = cart;
   return (
+      <Router>
     <div className="grid-container">
     <header className="row">
         <div className="header-brand">
-            <a href="/home">Amazon</a>
+            <Link to="/">Amazon</Link>
         </div>
         <div className="">
-            <a href="/cart">Cart</a>
-            <a href="/signin">Sign in</a>
+            <Link to="/cart">Cart
+            {cartItems.length > 0 &&(
+                <span className="badge">{cartItems.length}</span>
+            )}
+            </Link>
+            <Link to="/signin">Sign in</Link>
         </div>
     </header>
     <main>
-        <div className="row center">
-          {data.products.map(product=>(
-              <div className="card" key={product._id}>
-              <a href={`/product/${product._id}`}>
-                  <img className="medium" src={product.image} alt={product.name}/>
-              </a>
-              <div className="card-body">
-                  <a href={`/product/${product._id}`}>
-                      <h2>{product.name}</h2>
-                  </a>
-                  <div className="rating">
-                      <span><i className="fa fa-star"></i></span>
-                      <span><i className="fa fa-star"></i></span>
-                      <span><i className="fa fa-star"></i></span>
-                      <span><i className="fa fa-star"></i></span>
-                      <span><i className="fa fa-star-half-o"></i></span>
-                  </div>
-                  <div className="price">
-                      ${product.price}
-                  </div>
-              </div>
-          </div>
-          ))}
-            
-        </div>
+    <Routes>
+        <Route path="/" element={<HomeScreen/>} exact/>
+        <Route path="/product/:id" element={<ProductScreen/>}/>
+        <Route path="/cart/:id" element={<CartScreen/>}/>
+    </Routes>
+ 
     </main>
     <footer className="row center">All right reserved.</footer>
 </div>
+</Router>
   );
 }
 
